@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 8</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <form style="width:50%" class="container">
+        <h1>Sign Up</h1>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your name">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter your password">
+        </div>
+        <div class="mb-3">
+          <label for="hobbies" class="form-label">Hobbies</label>
+          <select class="form-control" id="hobbies">
+            <option>Reading</option>
+            <option>Writing</option>
+            <option>Coding</option>
+            <option>Gaming</option>
+            <option>Sports</option>
+          </select>
+        </div>
+        <div style="display: flex; justify-content: center;"> <button style="width:90%" type="submit" class="btn btn-danger">Sign Up</button></div>
+       
+      </form>
+      
+</body>
+<script>
+    // Name validation
+const nameRegex = /^[a-zA-Z]{2,}$/;
+const nameError = document.getElementById("nameError");
+
+function validateName() {
+  const name = document.getElementById("name").value;
+
+  if (!nameRegex.test(name)) {
+    nameError.innerHTML = "Please enter a valid name";
+    nameError.style.color = "red";
+    return false;
+  } else {
+    nameError.innerHTML = "";
+    return true;
+  }
+}
+
+// Email validation
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const emailError = document.getElementById("emailError");
+
+function validateEmail() {
+  const email = document.getElementById("email").value;
+
+  if (!emailRegex.test(email)) {
+    emailError.innerHTML = "Please enter a valid email address";
+    emailError.style.color = "red";
+    return false;
+  } else {
+    emailError.innerHTML = "";
+    return true;
+  }
+}
+
+// Password validation
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/;
+const passwordError = document.getElementById("passwordError");
+
+function validatePassword() {
+  const password = document.getElementById("password").value;
+
+  if (!passwordRegex.test(password)) {
+    passwordError.innerHTML = "Please enter a valid password";
+    passwordError.style.color = "red";
+    return false;
+  } else {
+    passwordError.innerHTML = "";
+    return true;
+  }
+}
+
+// Form submission
+const form = document.getElementById("form");
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  if (!validateName() || !validateEmail() || !validatePassword()) {
+    return;
+  }
+
+  // Submit the form
+  form.submit();
+});
+
+</script>
+</html>
